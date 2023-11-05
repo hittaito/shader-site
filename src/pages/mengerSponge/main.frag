@@ -4,7 +4,7 @@ uniform vec2 uResolution;
 uniform float uTime;
 uniform vec2 uMouse; // -1 ~ 1
 uniform float uPolor;
-uniform float uOffset;
+uniform vec3 uOffset;
 uniform float uScale;
 
 in vec2 iUv;
@@ -46,7 +46,7 @@ vec3 map(vec3 p) {
   mp.z -= uTime * .6;
   mp.z = mod(mp.z, 2.) - 1.;
   mp.xy = pmod(mp.xy, uPolor);
-  float d = sdMenger(mp, vec3(uOffset), uScale);
+  float d = sdMenger(mp, uOffset, uScale);
 
   return vec3(d, 0., 0.);
 }

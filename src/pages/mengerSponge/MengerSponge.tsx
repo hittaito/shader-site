@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { GLSL3, ShaderMaterial, Vector2 } from "three";
+import { GLSL3, ShaderMaterial, Vector2, Vector3 } from "three";
 import vert from "./main.vert?raw";
 import frag from "./main.frag?raw";
 import { useFrame, useThree } from "@react-three/fiber";
@@ -18,22 +18,27 @@ export const MengerSponge: React.FC = () => {
         uTime: { value: 0 },
         uMouse: { value: new Vector2(0, 0) },
         uPolor: { value: 4 },
-        uOffset: { value: 1 },
+        uOffset: { value: new Vector3(1, 1, 1) },
         uScale: { value: 3 },
       },
     });
     setMaterial(mat);
   }, []);
 
-  const { uPolor, uOffset, uScale } = useControls("shader", {
-    uPolor: { value: 4, min: 3, max: 10, step: 1 },
-    uOffset: { value: 1, min: 0.001, max: 4 },
-    uScale: { value: 3, min: 1, max: 5 },
-  });
+  const { uPolor, uOffsetX, uOffsetY, uOffsetZ, uScale } = useControls(
+    "shader",
+    {
+      uPolor: { value: 4, min: 3, max: 10, step: 1 },
+      uOffsetX: { value: 1, min: 0.001, max: 4 },
+      uOffsetY: { value: 1, min: 0.001, max: 4 },
+      uOffsetZ: { value: 1, min: 0.001, max: 4 },
+      uScale: { value: 3, min: 1, max: 5 },
+    }
+  );
 
   const viewport = useThree((state) => state.viewport);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!material) return;
 
     // update unimforms
@@ -43,7 +48,7 @@ export const MengerSponge: React.FC = () => {
     material.uniforms.uTime.value = state.clock.getElapsedTime();
     material.uniforms.uMouse.value = state.mouse;
     material.uniforms.uPolor.value = uPolor;
-    material.uniforms.uOffset.value = uOffset;
+    material.uniforms.uOffset.value.set(uOffsetX, uOffsetY, uOffsetZ);
     material.uniforms.uScale.value = uScale;
   });
 
