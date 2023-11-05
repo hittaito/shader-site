@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { GLSL3, ShaderMaterial, Vector2 } from "three";
-import vert from "./glsl/main.vert?raw";
-import frag from "./glsl/main.frag?raw";
+import vert from "./main.vert?raw";
+import frag from "./main.frag?raw";
 import { useFrame, useThree } from "@react-three/fiber";
 import { ScreenQuad } from "@react-three/drei";
 import { useControls } from "leva";
 
-export const Experience: React.FC = () => {
+export const MengerSponge: React.FC = () => {
   const [material, setMaterial] = useState<ShaderMaterial>();
   useEffect(() => {
     const mat = new ShaderMaterial({
@@ -47,7 +47,6 @@ export const Experience: React.FC = () => {
     material.uniforms.uScale.value = uScale;
   });
 
-  console.log("render");
   return (
     <>
       <ScreenQuad
