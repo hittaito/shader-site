@@ -1,7 +1,7 @@
 import "./App.css";
 import { MengerSponge } from "./pages/mengerSponge/MengerSponge";
 import { Link, Navigate, Route, Routes } from "react-router-dom";
-import { AO } from "./pages/ao/ao";
+import { JuliaSet } from "./pages/juliaSet/juliaSet";
 import { Canvas } from "@react-three/fiber";
 import { Perf } from "r3f-perf";
 import { Button, ListGroup, Offcanvas } from "react-bootstrap";
@@ -18,7 +18,7 @@ function App() {
       <Canvas>
         <Routes>
           <Route path="/menger-sponge" element={<MengerSponge />} />
-          <Route path="/ao" element={<AO />} />
+          <Route path="/julia-set" element={<JuliaSet />} />
           <Route path="*" element={<Navigate replace to="/menger-sponge" />} />
         </Routes>
         <Perf position="top-left" />
@@ -38,7 +38,7 @@ function App() {
               <Link to="/menger-sponge">Menger Sponge</Link>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Link to="/ao">Ambient Occlusion</Link>
+              <Link to="/julia-set">Julia Set</Link>
             </ListGroup.Item>
           </ListGroup>
         </Offcanvas.Body>

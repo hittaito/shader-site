@@ -28,11 +28,11 @@ export const MengerSponge: React.FC = () => {
   const { uPolor, uOffsetX, uOffsetY, uOffsetZ, uScale } = useControls(
     "shader",
     {
-      uPolor: { value: 4, min: 3, max: 10, step: 1 },
-      uOffsetX: { value: 1, min: 0.001, max: 4 },
-      uOffsetY: { value: 1, min: 0.001, max: 4 },
-      uOffsetZ: { value: 1, min: 0.001, max: 4 },
-      uScale: { value: 3, min: 1, max: 5 },
+      uPolor: { value: 7, min: 3, max: 10, step: 1 },
+      uOffsetX: { value: 1.26, min: 0.001, max: 4 },
+      uOffsetY: { value: 1.39, min: 0.001, max: 4 },
+      uOffsetZ: { value: 1.04, min: 0.001, max: 4 },
+      uScale: { value: 2.8, min: 1, max: 5 },
     }
   );
 
