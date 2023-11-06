@@ -32,7 +32,7 @@ export const JuliaSet: React.FC = () => {
 
   const viewport = useThree((state) => state.viewport);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (!material) return;
 
     // update unimforms
